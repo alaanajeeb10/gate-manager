@@ -27,6 +27,14 @@ const PORT = process.env.PORT || 5000;
 
 
 /* =========================================================
+   TRUST PROXY
+   Required for Render + express-rate-limit
+========================================================= */
+
+app.set("trust proxy", 1);
+
+
+/* =========================================================
    CORS CONFIGURATION
 ========================================================= */
 
@@ -75,9 +83,7 @@ app.use(
             );
         },
 
-
         credentials: true,
-
 
         methods: [
             "GET",
@@ -88,12 +94,10 @@ app.use(
             "OPTIONS",
         ],
 
-
         allowedHeaders: [
             "Content-Type",
             "Authorization",
         ],
-
 
         optionsSuccessStatus: 204,
     })
@@ -331,7 +335,7 @@ app.listen(
         );
 
         console.log(
-            `Swagger docs available at http://localhost:${PORT}/api-docs`
+            `Swagger docs available on port ${PORT}`
         );
 
         console.log(

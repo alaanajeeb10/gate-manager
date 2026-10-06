@@ -41,9 +41,9 @@ app.set("trust proxy", 1);
 const allowedOrigins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://172.20.10.3:5173",
     "https://gate-manager-sigma.vercel.app",
 ];
-
 
 // Allow frontend URL from Render Environment Variables
 if (process.env.FRONTEND_URL) {

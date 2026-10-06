@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-
-    baseURL: "https://gate-manager-8hyf.onrender.com/api",
+    baseURL: "http://172.20.10.3:5000/api",
 
     headers: {
         "Content-Type": "application/json",
@@ -10,24 +9,18 @@ const api = axios.create({
 });
 
 // JWT INTERCEPTOR
-
 api.interceptors.request.use(
-
     (config) => {
-
         const token = localStorage.getItem("token");
 
         if (token) {
-
-            config.headers.Authorization =
-                `Bearer ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
         }
 
         return config;
     },
 
     (error) => {
-
         return Promise.reject(error);
     }
 );
